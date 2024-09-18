@@ -1,13 +1,15 @@
 import { Router, request, response, Request, Response } from 'express';
 
-import { getUsuarios } from './controller/UserController';
+import { getUsuarios, saveUsuarios } from './controller/UserController';
 
 const routes = Router();
 
-routes.get('/home', (request: Request, response: Response) => {
-  return response.json({ message: 'Hello World' });
+routes.get('/', (request: Request, response: Response) => {
+  return response.json({ message: 'Rota raiz funcionando!' });
 });
 
 routes.get('/usuarios', getUsuarios);
 
-export default routes;
+routes.post('/usuarios', saveUsuarios);
+
+export default routes
